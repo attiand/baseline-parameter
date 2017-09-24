@@ -1,6 +1,8 @@
 package se.uhr.nya.build.baselineparameter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.kohsuke.stapler.AncestorInPath;
@@ -53,7 +55,10 @@ public class BaselineParameterDefinition extends SimpleParameterDefinition {
 				if (def instanceof BaselineParameterDefinition) {
 					BaselineParameterDefinition paramDef = (BaselineParameterDefinition) def;
 
-					for (String bl : paramDef.baselines) {
+					List<String> tmp = new ArrayList<>(paramDef.baselines);
+					Collections.reverse(tmp);
+					
+					for (String bl : tmp) {
 						items.add(bl);
 					}
 				}
