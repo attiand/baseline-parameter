@@ -4,8 +4,12 @@
 	xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
 	<f:entry title="${it.name}" description="${it.formattedDescription}">
 		<div name="parameter" description="${it.formattedDescription}">
-			<input type="hidden" name="name" value="${it.name}" />
-			<f:textbox name="value" value="${it.defaultValue}" />
+         <input type="hidden" name="name" value="${it.name}"/>
+            <st:adjunct includes="lib.form.select.select"/>
+            <select name="value" class="select" size="5" style="min-width: 200px" id="select"
+                    fillUrl="${h.getCurrentDescriptorByNameUrl()}/${it.descriptor.descriptorUrl}/fillValueItems?param=${it.name}">
+                <option value="">${%retrieving.references}</option>
+            </select>
 		</div>
 	</f:entry>
 </j:jelly>
